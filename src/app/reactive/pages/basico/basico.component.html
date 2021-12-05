@@ -1,0 +1,93 @@
+<h2>Reactive: <small>Basico</small></h2>
+<hr />
+<form autocomplete="off" [formGroup]="producto" (ngSubmit)="guardar()">
+  <div class="mb-3 row">
+    <label for="producto" class="col-sm-2 col-form-label">Producto *</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        id="producto"
+        formControlName="nombre"
+        [class.is-invalid]="
+          producto.get('nombre')?.invalid &&
+          (producto.get('nombre')?.touched || producto.get('nombre')?.dirty)
+        "
+      />
+      <div class="invalid-feedback">
+        <span *ngIf="producto.get('nombre')?.getError('required')">
+          Es obligatorio
+        </span>
+        <span *ngIf="producto.get('nombre')?.getError('minlength')">
+          Minimo
+          {{ producto.get("nombre")?.getError("minlength").requiredLength }}
+          caracteres
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="precio" class="col-sm-2 col-form-label">Precio *</label>
+    <div class="col-sm-10">
+      <input
+        type="number"
+        class="form-control"
+        id="precio"
+        formControlName="precio"
+        [class.is-invalid]="
+          producto.get('precio')?.invalid &&
+          (producto.get('precio')?.touched || producto.get('precio')?.dirty)
+        "
+      />
+      <div class="invalid-feedback">
+        <span *ngIf="producto.get('precio')?.getError('required')">
+          Es obligatorio
+        </span>
+        <span *ngIf="producto.get('precio')?.getError('min')">
+          Debe ser mayor o igual a
+          {{ producto.get("precio")?.getError("min").min }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="existencias" class="col-sm-2 col-form-label">Existencias</label>
+    <div class="col-sm-10">
+      <input
+        type="number"
+        class="form-control"
+        id="existencias"
+        formControlName="existencias"
+        [class.is-invalid]="
+        producto.get('existencias')?.invalid &&
+        (producto.get('existencias')?.touched || producto.get('existencias')?.dirty)
+      "
+      />
+      <div class="invalid-feedback">
+        <span *ngIf="producto.get('existencias')?.getError('required')">
+          Es obligatorio
+        </span>
+        <span *ngIf="producto.get('existencias')?.getError('min')">
+          Debe ser mayor o igual a
+          {{ producto.get("existencias")?.getError("min").min }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex">
+    <button class="btn btn-primary ms-auto">
+      Guardar
+    </button>
+  </div>
+</form>
+
+<div class="row">
+  <div class="col">
+    <p><strong>valid: </strong>{{ producto.valid }}</p>
+    <div class="mb-3">
+      <strong>value:</strong>
+      <pre>{{ producto.value | json }}</pre>
+    </div>
+  </div>
+</div>
+
