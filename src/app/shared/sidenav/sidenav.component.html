@@ -22,3 +22,15 @@
     {{ item.label }}
   </a>
 </div>
+<h2>Auth</h2>
+<hr />
+<div class="list-group mb-3">
+  <a
+    *ngFor="let item of authMenu"
+    class="list-group-item list-group-item-action"
+    [routerLink]="item.path"
+    routerLinkActive="active"
+  >
+    {{ item.label }}
+  </a>
+</div>

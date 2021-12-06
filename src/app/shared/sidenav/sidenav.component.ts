@@ -8,42 +8,49 @@ interface MenuItem {
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class SidenavComponent implements OnInit {
   templateMenu: MenuItem[] = [
     {
       label: 'Basico',
-      path: 'template/basico'
+      path: 'template/basico',
     },
     {
       label: 'Dinamico',
-      path: 'template/dinamico'
+      path: 'template/dinamico',
     },
     {
       label: 'Switch',
-      path: 'template/switch'
+      path: 'template/switch',
     },
   ];
   templateReactive: MenuItem[] = [
     {
       label: 'Basico',
-      path: 'reactive/basico'
+      path: 'reactive/basico',
     },
     {
       label: 'Dinamico',
-      path: 'reactive/dinamico'
+      path: 'reactive/dinamico',
     },
     {
       label: 'Switch',
-      path: 'reactive/switch'
+      path: 'reactive/switch',
+    },
+  ];
+  authMenu: MenuItem[] = [
+    {
+      label: 'Login',
+      path: '/auth/login',
+    },
+    {
+      label: 'Register',
+      path: '/auth/register',
     },
   ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

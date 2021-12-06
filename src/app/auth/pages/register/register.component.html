@@ -1,0 +1,86 @@
+<h2>Validaciones Reactivas</h2>
+<hr />
+<form (ngSubmit)="save()" [formGroup]="form">
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Nombre</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="nombre"
+        [class.is-invalid]="isInvalid('nombre')"
+      />
+      <div class="invalid-feedback">Debe ser en formato nombre y apellido</div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        [class.is-invalid]="isInvalid('email')"
+      />
+      <div class="invalid-feedback">
+        {{emailError}}
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Username</label>
+    <div class="col-sm-10">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="username"
+        [class.is-invalid]="isInvalid('username')"
+      />
+      <div class="invalid-feedback">No debe ser matu</div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password"
+        [class.is-invalid]="isInvalid('password')"
+      />
+      <div class="invalid-feedback">Debe ser mayor o igual 6 caracteres</div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Confirmar</label>
+    <div class="col-sm-10">
+      <input
+        type="password"
+        class="form-control"
+        formControlName="password2"
+        [class.is-invalid]="isInvalid('password2')"
+      />
+      <div class="invalid-feedback">Debe ser igual a Password</div>
+    </div>
+  </div>
+  <div class="d-flex">
+    <button class="btn btn-primary ms-auto" [disabled]="form.pending">Guardar</button>
+  </div>
+</form>
+
+<strong>Valid</strong>
+<pre>{{ form.valid }}</pre>
+<strong>Status</strong>
+<pre>{{ form.status }}</pre>
+<strong>Pending</strong>
+<pre>{{ form.pending }}</pre>
+<strong>Value</strong>
+<pre>{{ form.value | json }}</pre>
+<strong>Nombre</strong>
+<pre>{{ form.get("nombre")?.errors | json }}</pre>
+<strong>email</strong>
+<pre>{{ form.get("email")?.errors | json }}</pre>
+<strong>username</strong>
+<pre>{{ form.get("username")?.errors | json }}</pre>
+<strong>confirmar</strong>
+<pre>{{ form.get("password2")?.errors | json }}</pre>
